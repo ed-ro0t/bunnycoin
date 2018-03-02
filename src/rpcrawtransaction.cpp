@@ -1,3 +1,4 @@
+
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Copyright (c) 2013-2014 Dogecoin Developers
@@ -239,8 +240,8 @@ Value listunspent(const Array& params, bool fHelp)
         {
             CTxDestination address;
             if (ExtractDestination(pk, address))
-            {
-                const CScriptID& hash = boost::get<const CScriptID&>(address);
+            {   
+                const CScriptID& hash = boost::get<CScriptID>(address);
                 CScript redeemScript;
                 if (pwalletMain->GetCScript(hash, redeemScript))
                     entry.push_back(Pair("redeemScript", HexStr(redeemScript.begin(), redeemScript.end())));
